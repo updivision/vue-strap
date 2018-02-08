@@ -2059,6 +2059,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	  request.open('GET', url);
 	  request.setRequestHeader('Accept', 'application/json');
+	  request.setRequestHeader('X-CSRF-TOKEN', window.Laravel.csrfToken);
+	  request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	  request.send();
 	  return p;
 	}
@@ -6852,6 +6854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      this.$nextTick(function () {
 	        var popover = _this2.$refs.popover;
+		if(typeof popover == 'undefined') return;      
 	        var trigger = _this2.$refs.trigger.children[0];
 	        switch (_this2.placement) {
 	          case 'top':
